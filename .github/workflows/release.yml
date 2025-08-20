@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        target: [x86_64-pc-windows-msvc]
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        target: ${{ matrix.target }}
+        toolchain: stable
+    - run: cargo build --release --target ${{ matrix.target }}
+    - uses: actions/upload-artifact@v4
+      with:
+        name: phirust-transpiler-windows
+        path: target/${{ matrix.target }}/release/phirust-transpiler.exe
+
+  create-release:
+    needs: build
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        path: artifacts
+    - uses: softprops/action-gh-release@v1
+      with:
+        files: artifacts/phirust-transpiler-windows/phirust-transpiler.exe
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
