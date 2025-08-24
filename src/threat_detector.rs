@@ -1,3 +1,6 @@
+// Copyright 2025 Baleine Jay
+// Licensed under the Phicode Non-Commercial License (https://banes-lab.com/licensing)
+// Commercial use requires a paid license. See link for details.
 use aho_corasick::AhoCorasick;
 
 pub struct ThreatDetector {
@@ -7,7 +10,6 @@ pub struct ThreatDetector {
 impl ThreatDetector {
     pub fn new() -> Result<Self, String> {
         let threats = [
-            // Current patterns (all good)
             "eval(", "eval (", "exec(", "exec (", "compile(", "compile (",
             "getattr(__builtins__", "getattr(__builtins__,", "globals(", "globals (",
             "locals(", "locals (", "os.system(", "os.system (", "subprocess.",

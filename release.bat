@@ -1,2 +1,4 @@
-git tag v0.3.0
-git push origin v0.3.0
+cargo build --release
+cargo build --release --target x86_64-pc-windows-msvc
+git tag v1.0.0
+git push origin v1.0.0

@@ -1,0 +1,16 @@
+# PhiRust Transpiler
+
+---
+
+The `phicode-transpiler` is an optional binary and plugin designed to accelerate the PhiCode Runtime Engine’s transpilation process by efficiently converting symbolic PhiCode syntax into Python code using preconfigured regex-based mappings. It integrates a `ThreatDetector` that leverages the Aho-Corasick algorithm to identify potentially dangerous Python constructs, such as `eval`, `exec`, `compile`, and unsafe built-ins, providing a security layer during transpilation. The transpiler supports high-performance bulk replacement of symbols, detects the presence of extended UTF-8 symbols before processing to optimize runtime, and allows optional bypass of security checks for trusted environments, making it a modular and extensible component of the PhiCode ecosystem.
+
+---
+
+## License
+
+This plugin is licensed under the same **Phicode License** as the core engine.
+
+- **Non-Commercial Use:** Free for personal, academic, and non-commercial use.
+- **Commercial Use:** Requires a paid commercial license.
+
+For details, see the [LICENSE](LICENSE.md) file in this repository or visit [https://banes-lab.com/licensing](https://banes-lab.com/licensing).
